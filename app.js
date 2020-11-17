@@ -10,6 +10,10 @@ var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 var actorsRouter = require('./routes/actors');
 
+var apiMoviesRoruter =  require('./routes/movies')
+var apiActorsRoruter =  require('./routes/movies')
+
+
 var app = express();
 
 // view engine setup
@@ -27,6 +31,9 @@ app.use('/users', usersRouter);
 
 app.use('/movies',moviesRouter);
 app.use('/actors',actorsRouter);
+app.use('/api/movies',apiMoviesRoruter);
+app.use('/api/actors',apiActorsRoruter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
