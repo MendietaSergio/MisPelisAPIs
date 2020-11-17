@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<%-include('partials/head') %> 
+<body>
+    <%-include('partials/header') %>
+<div class="container p-5">
+    <h1><%= actor.first_name + ' ' + actor.last_name %> </h1>
+    <hr>
+    <h3>rating: <%= actor.rating %> </h3>
+    <% if (favorita) { %>
+        <h4 class="text-secondary">pelicula favorita: <%= favorita.title %> </h4>
+    <hr>
+    <% } %>
+    <% if (peliculas) { %>
+        <ul class="list-group list-group-flush">
+            <h5>Peliculas en donde actuó: </h5>
+            <% peliculas.forEach(pelicula => { %>
+                <li class="list-group-item"><%= pelicula.title %> <a href="/movies/detail/<%= pelicula.id %> " ><i class="far fa-eye"></i></a> </li>
+            <% }) %>
+        
+          </ul>
+    <% } %>
+   
+</div>
+    
+    <%-include('partials/footer') %> 
+
+</body>
+</html>

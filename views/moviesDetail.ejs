@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %> 
+<body>
+  <%- include('partials/header') %> 
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="card p-3 m-5">
+            <div class="card-body">
+              <div class="d-flex justify-content-end">
+                <form action="/movies/delete/<%= pelicula.id %>?_method=delete" method="POST">
+                <button class="btn-sm btn-danger m-1"><i class="fas fa-trash-alt"></i></button>
+                </form>
+                <form action="/movies/edit/<%= pelicula.id %>?_method=put" >
+                  <button class="btn-sm btn-success m-1"><i class="fas fa-edit"></i></button>
+                </form>
+              </div>
+              <h5 class="card-title"><%= pelicula.title %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= (pelicula.length)?`${pelicula.length} min`:"" %> </h6>
+              <% if (genero) { %>
+                <p><%= genero.name.toUpperCase() %><a class="ml-2" href="/genres/<%= genero.id %>"><i class="far fa-eye"></i></a></p>
+              <% } %>
+             
+              
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Rating: <%= pelicula.rating %> </li>
+                <li class="list-group-item">Premios: <%= pelicula.awards %> </li>
+                <li class="list-group-item">Estreno: <%= pelicula.release_date %> </li>
+              </ul>
+              <% if (actores.length != 0) { %>
+                <h6 class="card-subtitle mt-3"><b>Actores</b> </h6>
+                <ul class="list-group list-group-flush">
+                  <% actores.forEach(actor => { %>
+                    <li class="list-group-item"><%= actor.first_name + ' ' + actor.last_name %> <a href="/actors/view/<%= actor.id %> "><i class="far fa-eye"></i></a> </li>
+                  <% }) %>
+                </ul>
+              <% } %>
+             
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    
+  <%- include('partials/footer') %> 
+</body>
+</html>

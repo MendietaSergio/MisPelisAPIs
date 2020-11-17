@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %> 
+<body>
+  <%- include('partials/header') %> 
+<div class="container">
+        <% peliculas.forEach(pelicula => { %>
+            <div class="row m-3">
+
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= pelicula.title %> </h5>
+                      <h6 class="card-subtitle"><%= pelicula.release_date %> </h6>
+                      <a href="/movies/detail/<%= pelicula.id %> " class="card-link">Más detalles</a>
+                    </div>
+                  </div>
+                </div>
+        <% }) %>
+      
+
+ 
+  <%- include('partials/footer') %> 
+</body>
+</html>
